@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bora brindar? • Aniversário do Davi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff1d6;--card:#fffaf0;--ink:#1d1a16;--muted:#6b6258;--red:#ff5a3c;--yellow:#ffc933;--teal:#19a7a0;--line:#1d1a16;--shadow:#1d1a16;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17130f;--card:#241e18;--ink:#fff1d6;--muted:#b9ad9c;--line:#fff1d6;--shadow:#000}}
+:root[data-theme="dark"]{--bg:#17130f;--card:#241e18;--ink:#fff1d6;--muted:#b9ad9c;--line:#fff1d6;--shadow:#000}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.5;overflow-x:hidden;min-height:100vh;
+background-image:radial-gradient(var(--line) 1px,transparent 1.5px);background-size:26px 26px;background-position:0 0}
+body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.93;z-index:0}
+#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.balloon{position:absolute;bottom:-120px;width:44px;height:56px;border-radius:50% 50% 48% 48%;animation:rise linear infinite;opacity:.9}
+.balloon::after{content:"";position:absolute;left:50%;top:100%;width:1.5px;height:50px;background:var(--line);opacity:.5}
+@keyframes rise{to{transform:translateY(-125vh) translateX(var(--dx))}}
+canvas#confetti{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:99}
+main{position:relative;z-index:2;max-width:560px;margin:0 auto;padding:28px 16px 40px}
+.ticker{overflow:hidden;background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 0;margin-bottom:22px;transform:rotate(-1.2deg)}
+.ticker div{display:inline-block;white-space:nowrap;font-weight:800;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;animation:marq 18s linear infinite}
+@keyframes marq{to{transform:translateX(-50%)}}
+.card{background:var(--card);border:3px solid var(--line);border-radius:22px;box-shadow:7px 7px 0 var(--shadow);padding:26px 22px}
+.hero{text-align:center;position:relative}
+.kicker{font-family:'Caveat',cursive;font-size:1.7rem;color:var(--red);transform:rotate(-3deg);display:inline-block}
+h1{font-size:clamp(4.2rem,22vw,6.6rem);font-weight:800;line-height:.95;letter-spacing:-.04em;display:flex;justify-content:center;gap:2px;margin:4px 0 6px}
+h1 span{display:inline-block;animation:bounce 2.4s ease-in-out infinite;animation-delay:calc(var(--i)*.15s);color:var(--c)}
+@keyframes bounce{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(var(--r))}}
+.sub{font-size:1.05rem;font-weight:600}
+.sub em{font-style:normal;background:var(--yellow);color:#1d1a16;padding:0 6px;border-radius:6px}
+.mugs{display:block;margin:12px auto 0;width:150px;overflow:visible}
+.mugL{transform-origin:70px 120px;animation:clinkL 2.2s ease-in-out infinite}
+.mugR{transform-origin:130px 120px;animation:clinkR 2.2s ease-in-out infinite}
+@keyframes clinkL{0%,100%{transform:rotate(-14deg)}40%,55%{transform:rotate(8deg)}}
+@keyframes clinkR{0%,100%{transform:rotate(14deg)}40%,55%{transform:rotate(-8deg)}}
+.spark{transform-origin:100px 50px;animation:spark 2.2s ease-in-out infinite;opacity:0}
+@keyframes spark{0%,38%{opacity:0;transform:scale(.3)}45%{opacity:1;transform:scale(1.1)}60%,100%{opacity:0;transform:scale(1.4)}}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0 14px}
+.sticker{border:3px solid var(--line);border-radius:16px;padding:14px 12px;text-align:center;box-shadow:4px 4px 0 var(--shadow);color:#1d1a16;transition:transform .25s}
+.sticker:nth-child(1){background:var(--yellow);transform:rotate(-2deg)}
+.sticker:nth-child(2){background:var(--teal);transform:rotate(2deg)}
+.sticker:hover{transform:rotate(0) scale(1.04)}
+.sticker small{display:block;font-size:.7rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
+.sticker b{display:block;font-size:1.45rem;font-weight:800;line-height:1.15;margin-top:2px}
+.sticker i{font-style:normal;font-family:'Caveat',cursive;font-size:1.25rem}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.pill{font:inherit;font-weight:600;font-size:.85rem;color:var(--ink);background:var(--card);border:2.5px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;box-shadow:3px 3px 0 var(--shadow);transition:transform .15s,box-shadow .15s}
+.pill:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--shadow)}
+.pill:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
+.count{text-align:center;margin-bottom:26px}
+.count h3{font-family:'Caveat',cursive;font-size:1.7rem;color:var(--red);margin-bottom:6px}
+.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.timer div{border:3px solid var(--line);border-radius:14px;padding:10px 2px;background:var(--bg)}
+.timer b{display:block;font-size:2rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.timer small{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.rsvp{border-top:3px dashed var(--line);padding-top:24px}
+.rsvp h2{font-size:1.9rem;font-weight:800;text-align:center;letter-spacing:-.02em}
+.rsvp>p{text-align:center;color:var(--muted);font-size:.9rem;margin:4px 0 20px}
+.fg{margin-bottom:16px}
+label.t{display:block;font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+input[type=text],select,textarea{width:100%;font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:2.5px solid var(--line);border-radius:12px;padding:11px 13px;outline:none;transition:box-shadow .2s}
+input[type=text]:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px var(--yellow)}
+textarea{min-height:76px;resize:vertical}
+.radios{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.radios label{position:relative;display:block}
+.radios input{position:absolute;opacity:0}
+.radios span{display:block;text-align:center;font-weight:600;font-size:.9rem;border:2.5px solid var(--line);border-radius:12px;padding:12px 8px;cursor:pointer;background:var(--bg);transition:.2s}
+.radios input:checked+span{background:var(--red);color:#fff;transform:rotate(-1.5deg) scale(1.03);box-shadow:3px 3px 0 var(--shadow)}
+.radios input:focus-visible+span{outline:3px solid var(--yellow)}
+.send{width:100%;font:inherit;font-weight:800;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:#25a244;border:3px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;box-shadow:5px 5px 0 var(--shadow);transition:transform .15s,box-shadow .15s;margin-top:6px}
+.send:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--shadow)}
+.send:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
+.ok{display:none;text-align:center;padding:10px 0}
+.ok.on{display:block;animation:pop .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+.ok .big{font-size:3rem}
+.ok h3{font-size:1.7rem;font-weight:800;margin:4px 0}
+.ok p{color:var(--muted);font-size:.92rem;max-width:360px;margin:0 auto 14px}
+.ok .link{background:#25a244;color:#fff}
+.reset{background:none;border:none;color:var(--red);text-decoration:underline;font:inherit;font-size:.82rem;cursor:pointer;display:block;margin:14px auto 0}
+.foot{text-align:center;margin-top:26px;font-family:'Caveat',cursive;font-size:1.8rem;color:var(--red)}
+.foot small{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:440px){.grid{grid-template-columns:1fr}.card{padding:22px 16px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div id="sky" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<main>
+  <div class="ticker" aria-hidden="true"><div id="tick"></div></div>
+
+  <div class="card">
+    <header class="hero">
+      <span class="kicker">psiu, você aí…</span>
+      <h1 aria-label="Davi"><span style="--i:0;--c:#ff5a3c;--r:-6deg">D</span><span style="--i:1;--c:#ffc933;--r:5deg">A</span><span style="--i:2;--c:#19a7a0;--r:-5deg">V</span><span style="--i:3;--c:#ff5a3c;--r:6deg">I</span></h1>
+      <p class="sub">Seu escorpiano favorito vai ficar um ano mais velho</p>
+      <p class="sub" style="margin-top:6px;color:var(--muted);font-weight:400">Dito isso, acho que precisamos brindar a isso</p>
+      <svg class="mugs" viewBox="0 0 200 140" aria-hidden="true">
+        <g class="mugL"><rect x="40" y="60" width="44" height="60" rx="6" fill="#ffc933" stroke="currentColor" stroke-width="4"/><path d="M84 74h10a8 8 0 0 1 0 28H84" fill="none" stroke="currentColor" stroke-width="4"/><path d="M38 60q6-16 22-10 8-12 24 0 6-2 6 10z" fill="#fffaf0" stroke="currentColor" stroke-width="3"/></g>
+        <g class="mugR"><rect x="116" y="60" width="44" height="60" rx="6" fill="#19a7a0" stroke="currentColor" stroke-width="4"/><path d="M116 74h-10a8 8 0 0 0 0 28h10" fill="none" stroke="currentColor" stroke-width="4"/><path d="M114 60q6-16 22-10 8-12 24 0 6-2 6 10z" fill="#fffaf0" stroke="currentColor" stroke-width="3"/></g>
+        <g class="spark" stroke="#ff5a3c" stroke-width="4" stroke-linecap="round"><path d="M100 22v-14M84 30l-9-9M116 30l9-9M76 44H64M124 44h12"/></g>
+      </svg>
+    </header>
+
+    <section class="grid">
+      <div class="sticker"><small>Quando</small><b>13 de novembro</b><i>a partir das 17h</i></div>
+      <div class="sticker"><small>Onde</small><b>Bar Antiquário</b><i>Recife</i></div>
+    </section>
+
+    <div class="actions">
+      <a class="pill" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Bar+Antiquario+Recife">📍 Ver no mapa</a>
+      <button class="pill" id="btnCal" type="button">📅 Salvar na agenda</button>
+      <button class="pill" id="btnParty" type="button">🎉 Fazer festa</button>
+    </div>
+
+    <section class="count">
+      <h3>falta só isso pro rolê:</h3>
+      <div class="timer">
+        <div><b id="d">00</b><small>dias</small></div>
+        <div><b id="h">00</b><small>horas</small></div>
+        <div><b id="m">00</b><small>min</small></div>
+        <div><b id="s">00</b><small>seg</small></div>
+      </div>
+    </section>
+
+    <section class="rsvp">
+      <h2>Vai ou não vai?</h2>
+      <p>Responde até 04 de novembro pra eu saber quantas cadeiras puxar.</p>
+      <form id="form">
+        <div class="fg"><label class="t" for="nome">Seu nome</label><input type="text" id="nome"  required></div>
+        <div class="fg"><label class="t">E aí?</label>
+          <div class="radios">
+            <label><input type="radio" name="p" id="sim" value="sim" checked><span>😎 Tô dentro!</span></label>
+            <label><input type="radio" name="p" id="nao" value="nao"><span>😢 Não rola</span></label>
+          </div>
+        </div>
+        <div class="fg" id="acGroup"><label class="t" for="ac">Vem sozinho(a)?</label>
+          <select id="ac"><option value="0">Só eu mesmo</option><option value="1">+1 acompanhante</option></select>
+        </div>
+        <div class="fg"><label class="t" for="msg">Recado (opcional)</label><textarea id="msg" ></textarea></div>
+        <button class="send" type="submit">Confirmar no WhatsApp 🥳</button>
+      </form>
+      <div class="ok" id="ok">
+        <div class="big" id="okEmoji">🎉</div>
+        <h3 id="okT"></h3>
+        <p id="okP"></p>
+        <a class="pill link" id="zapLink" href="#" target="_blank" rel="noopener noreferrer">Reabrir WhatsApp</a>
+        <button class="reset" id="reset" type="button">Enviar outra resposta</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="foot">Te espero lá!<small>Bar Antiquário • 13/11 • 17h</small></div>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+// ticker
+$('tick').textContent=('🍻 BORA BRINDAR  •  13 DE NOVEMBRO  •  A PARTIR DAS 17H  •  BAR ANTIQUÁRIO  •  TRAGA A SEDE  •  ').repeat(6);
+// balloons
+(function(){const sky=$('sky'),cols=['#ff5a3c','#ffc933','#19a7a0','#ff8fa3'];
+for(let i=0;i<9;i++){const b=document.createElement('div');b.className='balloon';
+b.style.left=(Math.random()*95)+'%';b.style.background=cols[i%4];b.style.setProperty('--dx',(Math.random()*80-40)+'px');
+b.style.animationDuration=(14+Math.random()*12)+'s';b.style.animationDelay=(-Math.random()*20)+'s';
+b.style.transform='scale('+(.7+Math.random()*.6)+')';sky.appendChild(b);}})();
+// countdown (17h)
+function nextEvent(){const n=new Date();let e=new Date(n.getFullYear(),10,13,17,0,0);if(n>e)e=new Date(n.getFullYear()+1,10,13,17,0,0);return e}
+const target=nextEvent();
+function tick(){const dist=target-new Date();const p=v=>String(Math.max(0,v)).padStart(2,'0');
+if(dist<0){['d','h','m','s'].forEach(k=>$(k).textContent='00');return}
+$('d').textContent=p(Math.floor(dist/864e5));$('h').textContent=p(Math.floor(dist%864e5/36e5));
+$('m').textContent=p(Math.floor(dist%36e5/6e4));$('s').textContent=p(Math.floor(dist%6e4/1e3))}
+tick();setInterval(tick,1000);
+// RSVP
+const form=$('form'),ok=$('ok'),acG=$('acGroup');
+$('sim').addEventListener('change',()=>acG.style.display='block');
+$('nao').addEventListener('change',()=>acG.style.display='none');
+form.addEventListener('submit',e=>{e.preventDefault();
+const nome=$('nome').value.trim(),p=document.querySelector('input[name=p]:checked').value,ac=$('ac').value,msg=$('msg').value.trim();
+try{localStorage.setItem('rsvp_davi_'+encodeURIComponent(nome),JSON.stringify({nome,p,ac,msg,t:new Date().toISOString()}))}catch(err){}
+const tp=p==='sim'?'Confirmada! 😎':'Não poderei ir 😢';
+const ta=p==='sim'?(ac==='1'?'+1 acompanhante':'Só eu mesmo'):'Não se aplica';
+const txt='*Confirmação de Presença - Aniversário do Davi* 🎉\n\n*Nome:* '+nome+'\n*Presença:* '+tp+'\n*Acompanhante:* '+ta+'\n*Recado:* '+(msg||'Nenhum');
+const url='https://wa.me/5581993142442?text='+encodeURIComponent(txt);
+$('zapLink').href=url;window.open(url,'_blank');
+if(p==='sim'){$('okEmoji').textContent='🎉';$('okT').textContent='Presença confirmada!';
+$('okP').textContent='Boa, '+nome+'! Sua resposta foi pro WhatsApp do Davi. Já tá gelando a primeira rodada!';party()}
+else{$('okEmoji').textContent='🥺';$('okT').textContent='Poxa, vai fazer falta!';
+$('okP').textContent='Valeu por avisar, '+nome+'. A gente brinda na próxima, combinado?'}
+form.style.display='none';ok.classList.add('on')});
+$('reset').addEventListener('click',()=>{form.reset();acG.style.display='block';ok.classList.remove('on');form.style.display='block'});
+// calendar (17h–23h)
+$('btnCal').addEventListener('click',()=>{const y=target.getFullYear();
+const u='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Aniversário do Davi 🎉')+
+'&dates='+y+'1113T170000/'+y+'1113T230000&details='+encodeURIComponent('Bora brindar o aniversário do Davi!')+'&location='+encodeURIComponent('Bar Antiquário, Recife');
+window.open(u,'_blank')});
+// confetti
+const cv=$('confetti'),cx=cv.getContext('2d');let W,H,parts=[],raf=null;
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight}size();addEventListener('resize',size);
+function party(n=90){const cols=['#ff5a3c','#ffc933','#19a7a0','#ff8fa3','#ffffff'];
+for(let i=0;i<n;i++)parts.push({x:Math.random()*W,y:-20-Math.random()*H*.4,s:Math.random()*7+4,vy:Math.random()*3+2,vx:Math.random()*3-1.5,
+c:cols[i%5],r:Math.random()*360,vr:Math.random()*8-4,life:1});
+if(!raf)raf=requestAnimationFrame(loop)}
+function loop(){cx.clearRect(0,0,W,H);
+parts=parts.filter(p=>p.y<H+20&&p.life>0);
+parts.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.r+=p.vr;if(p.y>H*.7)p.life-=.02;
+cx.save();cx.globalAlpha=Math.max(0,p.life);cx.translate(p.x,p.y);cx.rotate(p.r*Math.PI/180);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/3,p.s,p.s*.66);cx.restore()});
+if(parts.length)raf=requestAnimationFrame(loop);else{raf=null;cx.clearRect(0,0,W,H)}}
+$('btnParty').addEventListener('click',()=>party(140));
+setTimeout(()=>party(60),500);
+</script>
+</body>
+</html>
