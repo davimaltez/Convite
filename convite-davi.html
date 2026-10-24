@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Bora brindar? • Aniversário do Davi</title>
+<title>Bora brindar? • Aniversário de Davi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
@@ -188,19 +188,19 @@ const nome=$('nome').value.trim(),p=document.querySelector('input[name=p]:checke
 try{localStorage.setItem('rsvp_davi_'+encodeURIComponent(nome),JSON.stringify({nome,p,ac,msg,t:new Date().toISOString()}))}catch(err){}
 const tp=p==='sim'?'Confirmada! 😎':'Não poderei ir 😢';
 const ta=p==='sim'?(ac==='1'?'+1 acompanhante':'Só eu mesmo'):'Não se aplica';
-const txt='*Confirmação de Presença - Aniversário do Davi* 🎉\n\n*Nome:* '+nome+'\n*Presença:* '+tp+'\n*Acompanhante:* '+ta+'\n*Recado:* '+(msg||'Nenhum');
+const txt='*Confirmação de Presença - Aniversário de Davi* 🎉\n\n*Nome:* '+nome+'\n*Presença:* '+tp+'\n*Acompanhante:* '+ta+'\n*Recado:* '+(msg||'Nenhum');
 const url='https://wa.me/5581993142442?text='+encodeURIComponent(txt);
 $('zapLink').href=url;window.open(url,'_blank');
 if(p==='sim'){$('okEmoji').textContent='🎉';$('okT').textContent='Presença confirmada!';
-$('okP').textContent='Boa, '+nome+'! Sua resposta foi pro WhatsApp do Davi. Já tá gelando a primeira rodada!';party()}
+$('okP').textContent='Boa, '+nome+'! Sua resposta foi pro WhatsApp de Davi. Já tá gelando a primeira rodada!';party()}
 else{$('okEmoji').textContent='🥺';$('okT').textContent='Poxa, vai fazer falta!';
 $('okP').textContent='Valeu por avisar, '+nome+'. A gente brinda na próxima, combinado?'}
 form.style.display='none';ok.classList.add('on')});
 $('reset').addEventListener('click',()=>{form.reset();acG.style.display='block';ok.classList.remove('on');form.style.display='block'});
 // calendar (17h–23h)
 $('btnCal').addEventListener('click',()=>{const y=target.getFullYear();
-const u='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Aniversário do Davi 🎉')+
-'&dates='+y+'1113T170000/'+y+'1113T230000&details='+encodeURIComponent('Bora brindar o aniversário do Davi!')+'&location='+encodeURIComponent('Bar Antiquário, Recife');
+const u='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Aniversário de Davi 🎉')+
+'&dates='+y+'1113T170000/'+y+'1113T230000&details='+encodeURIComponent('Vamos brindar meu aniversário!')+'&location='+encodeURIComponent('Bar Antiquário, Recife');
 window.open(u,'_blank')});
 // confetti
 const cv=$('confetti'),cx=cv.getContext('2d');let W,H,parts=[],raf=null;
